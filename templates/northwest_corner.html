@@ -1,0 +1,41 @@
+{% include 'header.html' %}
+
+<div class="container" style="height: 100vh; max-height: 200vh;" id="mainContainer">
+    <br>
+    <h1>Algoritmo Esquina del Noroeste</h1>
+    <form method="post" id="initialForm">
+        <div class="form-group">
+            <label for="numSources">Número de Fuentes</label>
+            <input type="number" class="form-control" id="numSources" name="numSources" required>
+        </div>
+        <div class="form-group">
+            <label for="numDestinations">Número de Destinos</label>
+            <input type="number" class="form-control" id="numDestinations" name="numDestinations" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Siguiente</button>
+    </form>
+    <form method="post" id="dataForm" style="display:none;">
+        <table class="table table-bordered" id="inputTable">
+            <thead>
+                <tr>
+                    <th>F/d</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Oferta</th>
+                </tr>
+            </tfoot>
+        </table>
+        <button type="submit" class="btn btn-primary">Calcular</button>
+    </form>
+    {% if plot_url %}
+        <h2>Resultado</h2>
+        <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid">
+        <h3>Tabla de Resultados</h3>
+        <div>{{ table_data|safe }}</div>
+    {% endif %}
+</div>
+{% include 'footer.html' %}

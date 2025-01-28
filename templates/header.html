@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de algoritmos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="none" stroke="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.5 3v5M8 5.5H3M8 16l-2 2m0 0l-2 2m2-2l2 2m-2-2l-2-2M20 6h-4m4 12.5h-4m4-3h-4m6-3.5H2m10 10V2" color="#ccc"/></svg> INVESTIGACIÓN DE OPERACIONES</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"></li>
+                        <a class="nav-link" href="{{ url_for('northwest_corner') }}">Algoritmo Esquina del Noroeste</a>
+                    </li>
+                    <li class="nav-item ml-5"></li>
+                        <a class="nav-link" href="{{ url_for('other_algorithm') }}">Otro Algoritmo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        
+   
