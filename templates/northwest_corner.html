@@ -1,41 +1,65 @@
 {% include 'header.html' %}
 
-<div class="container" style="height: 100vh; max-height: 200vh;" id="mainContainer">
-    <br>
-    <h1>Algoritmo Esquina del Noroeste</h1>
+<div class="container mb-5" id="mainContainer">
     <form method="post" id="initialForm">
-        <div class="form-group">
-            <label for="numSources">Número de Fuentes</label>
-            <input type="number" class="form-control" id="numSources" name="numSources" required>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="title-n text-center mb-5">
+                    <h2>Algoritmo <strong> Esquina del Noroeste</strong></h2>
+                </div>
+                <div class="form-group">
+                    <label for="numSources">Número de Fuentes</label>
+                    <input type="number" class="form-control" id="numSources" name="numSources" required placeholder="Ingrese el número de fuentes">
+                </div>
+                <div class="form-group">
+                    <label for="numDestinations">Número de Destinos</label>
+                    <input type="number" class="form-control" id="numDestinations" name="numDestinations" required placeholder="Ingrese el número de destinos">
+                </div>
+                <div class="d-flex">
+                    <button type="submit" class="btn btn-primary w-100 mt-4">Siguiente</button>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <img src="../static/resources/img/model-trnsport.png" alt="model-trnsport.png" class="img-fluid">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="numDestinations">Número de Destinos</label>
-            <input type="number" class="form-control" id="numDestinations" name="numDestinations" required>
+    </form>
+    <form id="dataForm" style="display:none;">
+        <div class="mt-5 text-center mb-5">
+            <h2>Ingrese los Datos de la Matriz de Transporte</h2>
         </div>
-        <button type="submit" class="btn btn-primary">Siguiente</button>
+        <div class="tabla">
+            <table class="table table-bordered" id="inputTable">
+                <thead>
+                    <tr>
+                        <th>F/D</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Oferta</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="n-filas-columna">
+        </div>
+        <div class="d-flex justify-content-end mb-5">
+            <button type="button" class="btn btn-primary mr-2" onclick="resuelve()">Calcular</button>
+            <button type="button" class="btn btn-secondary" id="resetButton">Crear otra tabla</button>
+        </div>
     </form>
-    <form method="post" id="dataForm" style="display:none;">
-        <table class="table table-bordered" id="inputTable">
-            <thead>
-                <tr>
-                    <th>F/d</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>Oferta</th>
-                </tr>
-            </tfoot>
-        </table>
-        <button type="submit" class="btn btn-primary">Calcular</button>
-    </form>
-    {% if plot_url %}
+    <div id="stepsContainer" style="display:none;">
+        <h2>Pasos del Algoritmo</h2>
+        <div id="steps"></div>
+    </div>
+    <div id="resultContainer" style="display:none;">
         <h2>Resultado</h2>
-        <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid">
-        <h3>Tabla de Resultados</h3>
-        <div>{{ table_data|safe }}</div>
-    {% endif %}
+        <div id="result"></div>
+    </div>
 </div>
+
 {% include 'footer.html' %}
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>

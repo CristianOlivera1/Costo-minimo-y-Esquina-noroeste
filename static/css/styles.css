@@ -349,3 +349,19 @@ p {
     font-weight:600
   }
 }
+
+/*NORTHWEST-CORNER*/
+.title-n{
+  margin-top: 100px;
+}
+.tabla{
+  overflow-x: auto; max-width: 1100px;
+}
+
+thead tr th {
+  width: 60px !important; 
+}
+
+td input {
+  max-width: 100px;
+}
