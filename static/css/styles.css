@@ -23,6 +23,23 @@ p {
   color: white;
 }
 
+.text-port {
+  font-weight: bold;
+  background: radial-gradient(circle, #ffffff 0%, #f8eeeed5 50%, #ffefef 70%, #e4e1e1e3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.shadow-blur{
+  text-shadow: 10px 90px 70px rgba(255,255,255,1);
+  color: rgb(252, 250, 251);
+}
+
+.logo-system{
+  width: 70px;
+  height: auto;
+}
+
 .logo {
   width: 50px;
   fill: white;

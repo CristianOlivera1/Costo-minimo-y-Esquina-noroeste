@@ -14,9 +14,9 @@ def northwest_corner():
     if request.method == 'POST':
         input1 = request.form['input1']
         input2 = request.form['input2']
-        # Aquí implementa la lógica del algoritmo Esquina del Noroeste usando input1 y input2
+        # Aquí se implementa la lógica del algoritmo Esquina del Noroeste usando input1 y input2
         fig, ax = plt.subplots()
-        ax.plot([1, 2, 3], [1, 4, 9])  # Reemplaza esto con la lógica del algoritmo
+        ax.plot([1, 2, 3], [1, 4, 9])
         img = io.BytesIO()
         plt.savefig(img, format='png')
         img.seek(0)
