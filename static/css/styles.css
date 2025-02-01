@@ -16,11 +16,13 @@ p {
   font-size: 14px;
 }
 
+/*INDEX*/
 .main {
   position: relative;
   text-align: center;
   background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
   color: white;
+  z-index: -1;
 }
 
 .text-port {
@@ -30,13 +32,59 @@ p {
   background-clip: text;
   color: transparent;
 }
+
 .shadow-blur{
   text-shadow: 10px 90px 70px rgba(255,255,255,1);
   color: rgb(252, 250, 251);
 }
 
-.logo-system{
+@keyframes slideUpDisappear {
+  0% {
+    transform: translateY(100px) rotate(0deg);  /* Comienza debajo de las waves */
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-300px) rotate(180deg); /* Subiendo y girando */
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-350px) rotate(360deg); /* Sale del header y completa el giro */
+    opacity: 0; /* Se desvanece */
+  }
+}
+
+.animation-port {
+  position: absolute;
+  bottom: 70px; /* Aparece debajo de las waves */
+  display: flex;
+  gap: 200px;
+  z-index: 0; /* Asegura que quede en el fondo */
+  animation: slideUpDisappear 10s linear infinite; /* Animación infinita */
+}
+
+.animation-port2 {
+  position: absolute;
+  bottom: 50px; /* Aparece debajo de las waves */
+  display: flex;
+  gap: 600px;
+  z-index: 0; /* Asegura que quede en el fondo */
+  animation: slideUpDisappear 12s linear infinite; /* Animación infinita */
+}
+
+.unamba-outline, .sistemas-gold {
+  width: 200px;
+  height: auto;
+  opacity: 0.5;
+}
+
+.unamba-color, .sistemas-color {
   width: 70px;
+  height: auto;
+  opacity: 0.4;
+}
+
+.logo-system{
+  width: 35px;
   height: auto;
 }
 
