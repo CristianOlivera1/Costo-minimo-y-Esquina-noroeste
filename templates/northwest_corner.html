@@ -1,7 +1,7 @@
 {% include 'header.html' %}
 
 <div class="container mb-5" id="mainContainer">
-    <form method="post" id="initialForm">
+    <form method="post" id="initialForm" onsubmit="return validateForm()">
         <div class="row">
             <div class="col-md-6">
                 <div class="title-n text-center mb-5">
@@ -15,12 +15,13 @@
                     <label for="numDestinations">Número de Destinos</label>
                     <input type="number" class="form-control" id="numDestinations" name="numDestinations" required placeholder="Ingrese el número de destinos">
                 </div>
+                <p id="errorMessage" style="color: red; display: none;">Los números negativos no son válidos.</p>
                 <div class="d-flex">
-                    <button type="submit" class="btn btn-primary w-100 mt-4">Siguiente</button>
+                    <button type="submit" class="btn btn-dark w-100 mt-4">Siguiente</button>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
                     <input type="file" id="importarArchivo" class="btn btn-info" style="display:none;" onchange="importarDatos(event)">
-                    <button type="button" class="btn btn-info" onclick="document.getElementById('importarArchivo').click()">Importar Datos</button>
+                    <button type="button" class="btn btn-success" onclick="document.getElementById('importarArchivo').click()"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M4 12a8 8 0 1 0 16 0"/><path stroke-linejoin="round" d="M12 4v10m0 0l3-3m-3 3l-3-3"/></g></svg> Importar Datos</button>
                 </div>
             </div>
             <div class="col-md-6 mt-4">
@@ -29,8 +30,10 @@
         </div>
     </form>
     <form id="dataForm" style="display:none;">
-        <div class="mt-5 mb-5">
-            <h2>Ingrese los Datos de la Matriz de Transporte</h2>
+        <button type="button" class="btn btn-outline-secondary mt-4" id="resetButton"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path d="m11.948 14.829l-1.414 1.414L6.29 12l4.243-4.243l1.414 1.415L10.12 11h7.537v2H10.12z"/><path fill-rule="evenodd" d="M4.222 19.778c-4.296-4.296-4.296-11.26 0-15.556s11.26-4.296 15.556 0s4.296 11.26 0 15.556s-11.26 4.296-15.556 0m1.414-1.414A9 9 0 1 1 18.364 5.636A9 9 0 0 1 5.636 18.364" clip-rule="evenodd"/></g></svg> Crear otra tabla</button>
+
+        <div class="mt-3 mb-5">
+            <h2>Ingrese los <strong>Datos</strong> de la Matriz de Transporte</h2>
         </div>
         <div class="tabla">
             <table class="table table-bordered" id="inputTable">
@@ -52,8 +55,7 @@
         </div>
         <div class="d-flex justify-content-end mb-5">
             <button type="button" class="btn btn-primary mr-2" onclick="resuelve()">Calcular</button>
-            <button type="button" class="btn btn-secondary mr-2" id="resetButton">Crear otra tabla</button>
-            <button type="button" class="btn btn-success mr-2" onclick="exportarDatos()">Exportar Datos</button>
+            <button type="button" class="btn btn-success mr-2" onclick="exportarDatos()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M4 12a8 8 0 1 0 16 0"/><path stroke-linejoin="round" d="M12 14V4m0 0l3 3m-3-3L9 7"/></g></svg> Exportar Datos</button>
         </div>
     </form>
     <hr>

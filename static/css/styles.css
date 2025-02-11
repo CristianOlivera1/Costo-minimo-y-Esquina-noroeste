@@ -16,6 +16,12 @@ p {
   font-size: 14px;
 }
 
+tr{
+  font-weight: normal;
+}
+thead tr{
+  font-weight: normal;
+}
 /*INDEX*/
 .main {
   position: relative;
@@ -55,36 +61,36 @@ p {
 
 .animation-port {
   position: absolute;
-  bottom: 70px; /* Aparece debajo de las waves */
+  bottom: clamp(30px, 5vw, 70px); 
   display: flex;
-  gap: 200px;
-  z-index: 0; /* Asegura que quede en el fondo */
-  animation: slideUpDisappear 10s linear infinite; /* Animación infinita */
+  gap: clamp(100px, 20vw, 200px);
+  z-index: 0;
+  animation: slideUpDisappear 10s linear infinite;
 }
 
 .animation-port2 {
   position: absolute;
-  bottom: 50px; /* Aparece debajo de las waves */
+  bottom: clamp(30px, 5vw, 50px); 
   display: flex;
-  gap: 600px;
-  z-index: 0; /* Asegura que quede en el fondo */
-  animation: slideUpDisappear 12s linear infinite; /* Animación infinita */
+  gap: clamp(200px, 30vw, 600px);
+  z-index: 0;
+  animation: slideUpDisappear 12s linear infinite; 
 }
 
 .unamba-outline, .sistemas-gold {
-  width: 200px;
+  width: clamp(150px, 20vw, 200px);
   height: auto;
   opacity: 0.5;
 }
 
 .unamba-color, .sistemas-color {
-  width: 70px;
+  width: clamp(50px, 10vw, 70px);
   height: auto;
   opacity: 0.4;
 }
 
 .logo-system{
-  width: 35px;
+  width: clamp(30px, 5vw, 50px);
   height: auto;
 }
 
@@ -364,4 +370,50 @@ thead tr th {
 
 td input {
   max-width: 100px;
+}
+.title-phone{
+  display: none;
+}
+
+
+@media (max-width: 480px) {
+  .title-pc{
+    display: none;
+  }
+  .title-phone{
+    display: block;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .site-footer [class^=col-] {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-footer {
+    padding-bottom: 0;
+  }
+  .site-footer .copyright-text,
+  .site-footer .social-icons {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer h6 {
+    font-size: 14px;
+  }
+  .site-footer p,
+  .site-footer a {
+    font-size: 12px;
+  }
+  .site-footer .social-icons a {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+  }
 }

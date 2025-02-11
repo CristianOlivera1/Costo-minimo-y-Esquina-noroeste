@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (initialForm) {
         initialForm.onsubmit = function(event) {
             event.preventDefault();
-            crearTabla();
+            if (validateForm()) {
+                crearTabla();
+            }
         };
     }
 
@@ -19,6 +21,20 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 });
+
+function validateForm() {
+    const numSources = document.getElementById('numSources').value;
+    const numDestinations = document.getElementById('numDestinations').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (numSources < 0 || numDestinations < 0) {
+        errorMessage.style.display = 'block';
+        return false;
+    } else {
+        errorMessage.style.display = 'none';
+        return true;
+    }
+}
 
 function crearTabla() {
     var numSources = document.getElementById('numSources').value;
@@ -60,7 +76,6 @@ function crearTabla() {
     var infoDiv = document.querySelector('.n-filas-columna');
     infoDiv.innerHTML = '<p>(' + numSources + 'X' + numDestinations + ')</p>';
 }
-
 function resuelve() {
     var numSources = document.getElementById('numSources').value;
     var numDestinations = document.getElementById('numDestinations').value;

@@ -60,7 +60,7 @@ def northwest_corner():
         costs = data['costs']
         result, steps, calculation = northwest_corner_method(supply, demand, costs)
         
-        fig, ax = plt.subplots(figsize=(len(demand) * 1.2, len(supply) * 0.8))
+        fig, ax = plt.subplots(figsize=(len(demand) * 1.5, len(supply) * 1.0))
         ax.axis('tight')
         ax.axis('off')
         table_data = pd.DataFrame(result, columns=[f'Destino {j+1}' for j in range(len(demand))], index=[f'Fuente {i+1}' for i in range(len(supply))])
@@ -75,7 +75,7 @@ def northwest_corner():
 
         # Generate step images
         for step in steps:
-            fig, ax = plt.subplots(figsize=(len(demand) * 1.2, len(supply) * 0.8))  # Ajuste dinámico del tamaño
+            fig, ax = plt.subplots(figsize=(len(demand) * 1.9, len(supply) * 1.4))  # Ajuste dinámico del tamaño
             ax.axis('tight')
             ax.axis('off')
             
