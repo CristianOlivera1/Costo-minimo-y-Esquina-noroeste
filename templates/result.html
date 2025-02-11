@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% include 'header.html' %}
+    <div class="container mt-5">
+        <h1 class="text-center">Resultados del Problema de Transporte</h1>
+        <h3>Asignaciones:</h3>
+        <table class="table table-bordered">
+            {% for row in result %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Costo Total:</h3>
+        <p class="alert alert-info">{{ total_cost }}</p>
+
+        <a href="/" class="btn btn-primary">Volver al Inicio</a>
+    </div>
+    <div style="margin-bottom: 100px;">
+           
+    </div>
+{% include 'footer.html' %}

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from transport_solver import solve_transport_problem
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -94,7 +95,6 @@ def northwest_corner():
             img.seek(0)
             steps_images.append(base64.b64encode(img.getvalue()).decode())
 
-
         return jsonify({
             'plot_url': plot_url,
             'table_data': table_data.to_html(),
@@ -104,12 +104,34 @@ def northwest_corner():
 
     return render_template('northwest_corner.html', plot_url=plot_url, table_data=table_data.to_html() if table_data is not None else None, num_sources=num_sources, num_destinations=num_destinations, steps_images=steps_images)
 
-@app.route('/other_algorithm', methods=['GET', 'POST'])
-def other_algorithm():
-    if request.method == 'POST':
-        # Implementa aquí otro algoritmo y genera su gráfica
-        pass
-    return render_template('other_algorithm.html')
+@app.route('/minimun_cost', methods=['GET', 'POST'])
+def minimun_cost():
+    # Implement the logic for the minimum cost calculation here
+    return render_template('minimun_cost.html')
+
+@app.route('/generate_matrix', methods=['POST'])
+def generate_matrix():
+    try:
+        rows = int(request.form.get('rows'))
+        cols = int(request.form.get('cols'))
+        return render_template('matrix.html', rows=rows, cols=cols)
+    except Exception as e:
+        return f"Error: {e}"
+
+@app.route('/solve', methods=['POST'])
+def solve():
+    try:
+        rows = int(request.form.get('rows'))
+        cols = int(request.form.get('cols'))
+        supply = list(map(int, request.form.getlist('supply')))
+        demand = list(map(int, request.form.getlist('demand')))
+        costs = [list(map(int, request.form.getlist(f'cost_row_{i}'))) for i in range(rows)]
+
+        result, total_cost = solve_transport_problem(supply, demand, costs)
+
+        return render_template('result.html', result=result, total_cost=total_cost)
+    except Exception as e:
+        return f"Error: {e}"
 
 if __name__ == '__main__':
     app.run(debug=True)

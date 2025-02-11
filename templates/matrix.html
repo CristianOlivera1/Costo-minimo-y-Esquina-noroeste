@@ -1,0 +1,43 @@
+<form id="form-solve" method="POST" action="/solve">
+    <input type="hidden" name="rows" value="{{ rows }}">
+    <input type="hidden" name="cols" value="{{ cols }}">
+
+    <div style="margin-bottom: 30px;">
+        <h4>Complete los datos</h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered text-center">
+            <tr>
+                <td></td>
+                {% for j in range(cols) %}
+                <td class="table-info">Destino {{ j+1 }}</td>
+                {% endfor %}
+                <th class="table-warning">Oferta</th>
+            </tr>
+            {% for i in range(rows) %}
+                <tr>
+                    <td class="table-info">
+                        <label>Origen {{ i+1 }}</label>
+                    </td>
+                    {% for j in range(cols) %}
+                        <td style="padding-top: 12px;">
+                            <input type="number" name="cost_row_{{ i }}" class="form-control" required>
+                        </td>
+                    {% endfor %}
+                    <td>
+                        <input type="number" name="supply" class="form-control mb-2" placeholder="Oferta {{ i+1 }}" required>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th class="table-warning">Demanda</th>
+                {% for j in range(cols) %}
+                <td>
+                    <input type="number" name="demand" class="form-control mb-2" placeholder="Demanda {{ j+1 }}" required>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <button type="submit" class="btn btn-success">Resolver</button>
+</form>
