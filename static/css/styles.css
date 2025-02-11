@@ -375,6 +375,19 @@ td input {
   display: none;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
 
 @media (max-width: 480px) {
   .title-pc{
