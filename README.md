@@ -17,7 +17,7 @@ Este proyecto implementa métodos de optimización como el método de Costo Mín
 - **Interfaz Gráfica**: Proporciona una interfaz gráfica para ingresar datos de transporte y ver los resultados.
 - **Cálculo de Costos**: Calcula el costo total del transporte utilizando los métodos implementados.
 - **Visualización de Resultados**: Muestra los resultados de los cálculos en formato de tabla y gráficos.
-- - **Importe y Exporte datos**: Transferencia de datos de la matriz de manera eficiente y personalizable.
+- **Importe y Exporte datos**: Transferencia de datos de la matriz de manera eficiente y personalizable.
 
 ## Instalación
 
